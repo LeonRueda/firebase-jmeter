@@ -33,5 +33,9 @@
     "url": "git://github.com/anonymous node/sails user/firebase-jmeter.git"
   },
   "author": "anonymous node/sails user",
-  "license": ""
+  "license": "",
+  "devDependencies": {
+    "firebase": "^4.3.1",
+    "rxjs": "^5.4.3"
+  }
 }
