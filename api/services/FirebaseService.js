@@ -20,7 +20,7 @@ const Service = {
     };
     firebase.initializeApp(config);
     this.database = firebase.database();
-    this.ref = this.database.ref('general-probe');
+    this.ref = this.database.ref('Leon-Probes');
     this.ref$ = Observable.of(this.ref);
   },
   connect: function () {
@@ -33,6 +33,13 @@ const Service = {
   },
   sendMessage: function ( message ) {
     this.ref.push( message );
+  },
+  readMessages: function (number) {
+    return new Promise( ( success, error ) => {
+      let query = this.ref.orderByChild('createdAt').limitToLast(number);
+      Observable.fromEvent(query, 'value', parseMessage)
+        .subscribe( ( val ) => success( val ), err => error(err));
+    })
   }
 };
 

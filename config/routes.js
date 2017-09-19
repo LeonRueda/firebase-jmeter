@@ -47,5 +47,6 @@ module.exports.routes = {
   ***************************************************************************/
 
   'GET /connect': 'ProcessController.connect',
-  'POST /send-message': 'ProcessController.sendMessage'
+  'POST /send-message': 'ProcessController.sendMessage',
+  'GET /read-message': 'ProcessController.readMessage'
 };

@@ -10,9 +10,13 @@ const Controller = {
       .catch( (err) => console.log(err));
   },
   sendMessage: function (req, res) {
-    MessageService.send(req.param("number"), req.param("interval"))
-      .then( data => res.send(data) )
-      .catch( err => console.log(err) );
+    MessageService.send(req.param("number"), req.param("interval"));
+    res.send("schedule " + req.param("number") + " messages each " + req.param("interval")/1000 + " secs." );
+  },
+  readMessage: function (req, res) {
+    FirebaseService.readMessages(+req.param("number"))
+      .then( data => res.send( data ) )
+      .catch( err => console.log( err ) );
   }
 };
 module.exports = Controller;
